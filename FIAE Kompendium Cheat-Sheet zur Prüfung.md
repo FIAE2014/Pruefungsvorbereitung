@@ -35,6 +35,26 @@ Inhalte werden anhand alter Prüfungen erstellt!
     - Anwendungsfälle können sich selber *extend*en oder auch andere *include*n
     - Generalieserung = Zwei spezielle Anwendungsfälle werden von einem generellerem abgeleitet
 
+2. Klassendiagramm
+    1. Klassenname mit eventuell Eigenschaften wie (*abstract*, *protected*)
+    2. Attribute (Variablen) nach Muster 
+        1. *private* **-** / *public* **+** Operator
+        2. Name des Attributes
+        3. **:**
+        4. Typ des Attributes (string, int, KlasseXY)
+            + Bspw: ```-LSD:Drug```
+            + Die Variable "LSD" ist vom Typ 'Drug' aber nicht direkt zugänglich durch den private Operator
+    3. Methoden / Funktionen nach Muster
+        1. *private* **-** / *public* **+** Operator
+        2. Name der Methode
+        3. **:**
+        4. Rückgabetyp (string, int, andere Klasse, void(nix))
+            + Bspw: ```+buyDrug():Drug```
+            + Ist eine öffentliche Methode um Drogen zu kaufen, bei welcher man logischer Weise ein Objekt "Drug" zurückbekommt
+    
+    4. Klassen können Beziehungen untereinander haben. Dadurch erkennt man *Vererbung* oder *Erweiterung* einer anderen Klasse -> Stichworte: *include* , *extends*
+        
+
 ---
 
 ### Datenbanken
@@ -110,6 +130,7 @@ Inhalte werden anhand alter Prüfungen erstellt!
     - Schleifen initalieseren und ggf. Zähler auch
         - Zähler sind meist daran zu kennen *summieren sie A für jedes XY*
     - Bspw. Durchlauf eines Bücher Arrays mit sammeln der kosten jedes einzelnen
+
     ```js
         int krasseSumme = 0;
         
@@ -161,4 +182,90 @@ Inhalte werden anhand alter Prüfungen erstellt!
                 return brotdesDönerfürAli; //"Semmel"
             }
         ```
-    
+------
+### More OOP
+
+    1. Abstrakte Klassen
+        - Lassen sich **nicht** initaliesieren!
+        - Können z.B. in Bibliotheken verwendet werden um Methoden bereitzustellen
+        ```java
+            public abstract class MethCookingFormulars{
+                int methamphetamin_weight = 300;
+
+                public cookingtime(int time){
+                    return this.methamphetamin_weight * 400 / 20 * time;
+                }
+            }
+
+            MethCookingForumlars.cookingtime(20); // 120.000
+        ```
+    2. Kontruktoren
+        - Enthalten den Bauablauf eines Objektes.
+        - Sobald z.B. ```new KLASSE()``` aufgerufen wird, wird der Kontruktor ausgeführt
+        ```java
+            public class BobbyCar{
+                private Color farbe;
+
+                //Kontruktor
+                public BobbyCar(int[] farbe){
+                    this.farbe = Color.getRGB(farbe);
+                }
+            }
+
+            BobbyCar BrunosBobbyCar = new BobbyCar({255,0,0});
+            //Auch wenn wir bis jetzt nicht auf die Eigenschaft farbe zugreifen können, wissen wir sie ist rot.
+        ```
+    3. Überladung
+        - Alle Methoden können überladen werden!  
+        - Wenn wir eine Klasse mit mehreren Bauabläufen haben, **überladen** sich die Kontruktoren. Also wird der Kontruktor genutzt, welcher die gleichen Parameter (Anzahl und Typen) nutzt, wie wir sie übergeben.
+        Passt einer nicht, ist halt schlecht!
+        ```java
+        public class BobbyCar{
+                private Color farbe;
+
+                //Kontruktor für RGB eingabe
+                public BobbyCar(int[] farbe){
+                    this.farbe = Color.getRGB(farbe);
+                }
+
+                //Kontruktor für HEX Wert
+                public BobbyCar(string hexfarbe){
+                    this.farbe = Color.getHEX(hexfarbe)
+                }
+            }
+
+            BobbyCar BrunosBobbyCar = new BobbyCar({255,0,0}); //RED BOBBYCAR
+            BobbyCar DannysBobbyCar = new BobbyCar("#0000FF"); //BLUE BOBBYCAR 
+            
+
+        ```
+
+    4. Statische Methoden / Attribute
+        - Wenn Attribute oder Methoden als statisch deklariert sind, können sie ohne initaliesierung eines Objektes der Klasse genutzt werden.
+        - Statische Attribute sind Objektübergreifend!
+        ```java
+        public class BobbyCar{
+                private Color farbe;
+                public static int anzahlBobbyCars;
+
+                //Kontruktor für RGB eingabe
+                public BobbyCar(int[] farbe){
+                    this.anzahlBobbyCars++;
+                    this.farbe = Color.getRGB(farbe);
+                }
+
+                //Kontruktor für HEX Wert
+                public BobbyCar(string hexfarbe){
+                    this.anzahlBobbyCars++;
+                    this.farbe = Color.getHEX(hexfarbe)
+                }
+            }
+
+            BobbyCar BrunosBobbyCar = new BobbyCar({255,0,0}); 
+            print BobbyCar.anzahlBobbyCars; // 1
+            
+            BobbyCar DannysBobbyCar = new BobbyCar("#0000FF"); //BLUE BOBBYCAR 
+            print BobbyCar.anzahlBobbyCars; // 2
+            
+
+        ```

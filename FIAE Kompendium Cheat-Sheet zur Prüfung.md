@@ -250,21 +250,21 @@ Inhalte werden anhand alter Prüfungen erstellt!
 
                 //Kontruktor für RGB eingabe
                 public BobbyCar(int[] farbe){
-                    this.anzahlBobbyCars++;
+                    BobbyCar.anzahlBobbyCars++;
                     this.farbe = Color.getRGB(farbe);
                 }
 
                 //Kontruktor für HEX Wert
-                public BobbyCar(string hexfarbe){
-                    this.anzahlBobbyCars++;
+                public BobbyCar(String hexfarbe){
+                    BobbyCar.anzahlBobbyCars++;
                     this.farbe = Color.getHEX(hexfarbe)
                 }
             }
 
             BobbyCar BrunosBobbyCar = new BobbyCar({255,0,0}); 
             print BobbyCar.anzahlBobbyCars; // 1
-            
-            BobbyCar DannysBobbyCar = new BobbyCar("#0000FF"); //BLUE BOBBYCAR 
+
+            BobbyCar DannysBobbyCar = new BobbyCar("#0000FF");
             print BobbyCar.anzahlBobbyCars; // 2
             
 

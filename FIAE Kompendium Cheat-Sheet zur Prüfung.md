@@ -194,12 +194,12 @@ Inhalte werden anhand alter Prüfungen erstellt!
 
 ### Datenbankmodelle
 
-    1. Asso Tabelle:
-        - **ein** Thema -> **mehrere** Dingens
-            - 1:n Beziehung
-            - Thema hat auf jedenfall schonmal ein *FOREIGN_KEY* zu Dingens
-        - **eindeutige** Themen
-            - *Primary KEY* ggf. mit *UNIQUE* Eigenschaft
+1. Asso Tabelle:
+    * **ein** Thema -> **mehrere** Dingens
+        * 1:n Beziehung
+        * Thema hat auf jedenfall schonmal ein *FOREIGN_KEY* zu Dingens
+    * **eindeutige** Themen
+        * *Primary KEY* ggf. mit *UNIQUE* Eigenschaft
 
 ---
 
@@ -222,9 +222,8 @@ Inhalte werden anhand alter Prüfungen erstellt!
     ```
 4. Schleifen bewusst werden
     - Schleifen initalieseren und ggf. Zähler auch
-        - Zähler sind meist daran zu kennen *summieren sie A für jedes XY*
-    - Bspw. Durchlauf eines Bücher Arrays mit sammeln der kosten jedes einzelnen
-
+    - Zähler sind meist daran zu kennen *summieren sie A für jedes XY*
+    - Bspw. Durchlauf eines Bücher Arrays mit sammeln der kosten jedes einzelnen.
     ```js
         int krasseSumme = 0;
         
@@ -234,14 +233,13 @@ Inhalte werden anhand alter Prüfungen erstellt!
 
 5. Bedingungen bewusst werden
     - Bedingungen runterschreiben
-    - ggf. nochmal über **&&** (UND) , **||** (ODER) etc. Verknüpfungen nachdenken.
+    - ggf. nochmal über UND , ODER etc. Verknüpfungen nachdenken.
 
-
-6. Bei OOP (Objektorientieren Aufgaben)
+6. Bei OOP - Objektorientieren Aufgaben
     
     1. Wiederfinden von Schlagwörter aus der Aufgabenstellung in der z.b. Klassenübersicht
-        - *Aus allen Berufen...* == *getBerufe(): Beruf[ ]*
-        - *Das Gehalt des Berufes abrufen* == Klasse Berufe -> Methode getGehalt()
+        - Aus allen Berufen... == getBerufe(): Beruf[ ]
+        - *Das Gehalt des Berufes abrufen* == Klasse Berufe -> Methode "getGehalt()"
 
     1. Statische-Methoden anderer Klassen, müssen mit dem Klassennamen aufgerufen werden
         
@@ -364,3 +362,38 @@ Inhalte werden anhand alter Prüfungen erstellt!
             
 
         ```
+    5. Vererbung
+        - Klassen bedienen sich an anderen Klassen deren Eigenschaften und Methoden sind also Faule Klasse
+
+        ```java
+            public class Alkohol{
+                Double alc_in_przent;
+                public String securitynotice = "Dont drink and drive";
+            }
+
+            public class Vodka extends Alkohol{
+                String herkunft = "Russian";
+                String brand = "noname";
+
+                public Vodka(Int volt){
+                    
+                }
+            }
+
+            public class AlexSixtyThree extends Vodka{
+                private String herkunft = "West-Deutschland";
+                public String brand = "Alex SixtyThree Vodka " + this.alc_in_prozent +"%";
+                
+                public AlexSixtyThree(Int volt){
+                    this.alc_in_prozent = volt;
+                }
+            }
+
+            //Beispiele
+            //Remember:
+            //Klasse variable = new Klasse([Parameter]);
+            AlexSixtyThree specialVodka = new AlexSixtyThree(20);
+            print specialVodka.brand //Alex SixtyThree Vodka 20 %
+            print specialVodka.securitynotice // "Dont drink and drive"
+        ```
+

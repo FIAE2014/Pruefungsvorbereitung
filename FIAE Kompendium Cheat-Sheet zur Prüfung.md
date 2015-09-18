@@ -4,7 +4,7 @@ Inhalte werden anhand alter Prüfungen erstellt!
 
 ## GA1
 
-### Lasten- und Pflichtenheft
+### Projektmanagment meist(HS1)
 
 1. Lastenheft
     - Verfasser: Auftraggeber
@@ -16,13 +16,51 @@ Inhalte werden anhand alter Prüfungen erstellt!
 
 ------------
 
-### Gant
+#### Gant
 ![Gant-Diagramm](https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Gantt_diagramm.svg/500px-Gantt_diagramm.svg.png)
 - Aufgaben*blöcke* werden hintereinandern gereiht um die Ablauf eines Projekts zu strukturieren.
 - *Blöcke* können Vorgänger und Nachfolger haben
 - *Blöcke* haben eines Mindest und Maximallänge (können auch gleich sein)
 - *Kristischer Pfad* sind quasi die längsten anzunehmeden Pfade aufgrund der Maximallänge jedes Blockes
 - *Blöcke* können auch parallel abgearbeitet werden, wenn sie nicht von einander abhängig sind.
+
+#### Modelle
+
+1. Wasserfall-Modell
+    - ![Wasser](https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Waterfall_model-de.svg/800px-Waterfall_model-de.svg.png)
+    - Geht von oben nach unten
+    - Stadien (5 Stk)
+        + Anforderungen
+        + Entwurf
+        + Implmentation
+        + Überprüfung
+        + Wartung
+    - Phasenerbenisse sind Vorgabe für nächste Phase
+        + Wartung braucht Überprüfung braucht vorher ne Implementation welche erst da ist nachdem ein Entwurf gemacht wurde und dieser kann ja erst gemacht werden wenn man die Anforderungen weiß
+
+2. Spiral-Modell
+    - Sequel zu Wasserfallmodell ;)
+    - Entwicklung läuft quasi im Kreis an den Phasen vorbei und wiederholt sich deshalb oft.
+    - Phasen:
+        +   Ziele festlegen
+        +   Alternativen beurteilen
+        +   Coden
+        +   Planung des nächsten Zyklus
+    - Und dann heißt es "Und täglich grüßt das Murmeltier". Quasi ist Bill Murrey hier der Coder
+
+3. V-Modell
+    - ![V](https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/V-Modell.svg/440px-V-Modell.svg.png)
+    - Geht wie ein V von links oben nach recht oben
+    - linke Seite hat nur System- / Softwareshit (2x Entwurf und 2x Archtiektur)
+    - rechte Seite streckt die Hand nach rechts oben mit Integrationszeug
+    - Schluß ist auf jeden Fall die Abnahme
+    - Fazit: Defeniert den Weg zur Qualitätssicherung phasenweise
+
+4. Extreme Programming
+    - Standard in der Praxis
+    - Lösen einer Programmieraufgabe hat oberste Priorität, wenn dann langweile herscht können immer noch Diagramme gemalt werden.
+    - Hat im Spiralmodell sehr kurze Zyklen da alternativen weniger Prio bekommen
+    - Bill Murrey on Speed
 
 ---------
 
@@ -54,6 +92,16 @@ Inhalte werden anhand alter Prüfungen erstellt!
     
     4. Klassen können Beziehungen untereinander haben. Dadurch erkennt man *Vererbung* oder *Erweiterung* einer anderen Klasse -> Stichworte: *include* , *extends*
         
+3. Zustandsdiagramm
+    1. ![Zustand](https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Uml-Zustandsdiagramm-2.svg/300px-Uml-Zustandsdiagramm-2.svg.png)
+    2. ![Legende](https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Uml-Zustandsdiagramm-4.svg/200px-Uml-Zustandsdiagramm-4.svg.png)
+    3. Haben Eintrittspunkt (einfacher gefüllter Kreis) und Austrittspunkt(ge füllter Kreis mit Kreis drumherum)
+    4. Pfeile um den Ablauf zu deklarieren
+    5. Zustände in Blöcken
+
+4. Aktivitätsdiagramm
+    1. ![Aktivtat](https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Uml-Activity-Beispiel1.svg/400px-Uml-Activity-Beispiel1.svg.png)
+    2. Sieht doch fast so aus wie das Zustandsdiagramm
 
 ---
 
@@ -77,6 +125,9 @@ Inhalte werden anhand alter Prüfungen erstellt!
 1. mehrere = n-Beziehungen
 2. ein oder mehrere = 1n-Bezieung
 3. ein = 1er Beziehung
+
+- an jedem Schritt die Beziehung (1 || n) vermerken auch wenn mann es nicht weiß 50/50 Chance!
+- an jeder Beziehung Deklaration wie ("besteht aus", "gehört zu", "befindet sich in") usw. in das Rechteck hauen!
 
 ### SQL - Shit Query Language
 
@@ -105,7 +156,50 @@ Inhalte werden anhand alter Prüfungen erstellt!
     ```sql
     SELECT * FROM Blaster ORDER BY Speed
     ```
-    
+2. Beispiele
+    1. Alle Rechnungen eines Kunden XY
+    ```sql
+        SELECT * FROM Rechnung , Kunde WHERE Rechnung.KundeID == 123
+    ```
+    2. Alle Rechnungen aus dem Vorjahr
+    ```sql
+        SELECT * FROM Rechnung WHERE Rechnung.Datum < CURRENTYEAR()
+    ```
+    3. Alle Rechnung aus dem Vorjahr kopieren in Tabelle Archiv
+    ```sql
+        INSERT INTO Rechnungsarchiv VALUES (
+            SELECT * FROM Rechnung WHERE Rechnung.Datum < CURRENTYEAR();
+        );
+    ```
+    4. Alle Rechnung löschen die eben kopiert wurden sind.
+    ```sql
+        DELETE FROM Rechnung WHERE Rechnung.ID  IS IN Rechnungsarchiv
+    ```
+    5. Alle Rechnung aus (Archiv und Normal) eines Kunden '123', sortiert nach Datum mit der Information Herkunft (welche Tabelle)
+    ```sql
+        SELECT 
+            (DESCRIBE NAME) as Herkunft, RechnungsID, KundenID, Datum, Summe
+        FROM Rechnung, Rechnungsarchiv
+        WHERE Rechnung.KundenID == 123 || Rechnungsarchiv.KundenID == 123
+        ORDER BY Datum
+    ```
+    6. Alle Kunden die noch keine Rechnung haben.
+    ```sql
+        SELECT * FROM Kunden WHERE Kunde.ID NOT IN Rechnungen.KundeID
+    ```
+    7. Scheiß aufn Rechnungsarchiv gibt ja nur 10 Jahr Aufhebepflicht
+    ```sql
+        DROP TABLE Rechnungsarchiv;
+    ```
+
+### Datenbankmodelle
+
+    1. Asso Tabelle:
+        - **ein** Thema -> **mehrere** Dingens
+            - 1:n Beziehung
+            - Thema hat auf jedenfall schonmal ein *FOREIGN_KEY* zu Dingens
+        - **eindeutige** Themen
+            - *Primary KEY* ggf. mit *UNIQUE* Eigenschaft
 
 ---
 
@@ -154,6 +248,7 @@ Inhalte werden anhand alter Prüfungen erstellt!
         ```js
             KlasseXY.methodeABC();
         ```
+
     2. Normale Publicmethoden müssen vorher in einem Objekt initalisiert werden. Bspw: Gibt Klasse *Bar* mit Methode *magic*
         
         ```js

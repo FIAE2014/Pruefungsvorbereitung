@@ -195,11 +195,11 @@ Inhalte werden anhand alter Prüfungen erstellt!
 ### Datenbankmodelle
 
 1. Asso Tabelle:
-    * **ein** Thema -> **mehrere** Dingens
-        * 1:n Beziehung
-        * Thema hat auf jedenfall schonmal ein *FOREIGN_KEY* zu Dingens
-    * **eindeutige** Themen
-        * *Primary KEY* ggf. mit *UNIQUE* Eigenschaft
+    - **ein** Thema -> **mehrere** Dingens
+        - 1:n Beziehung
+        - Thema hat auf jedenfall schonmal ein *FOREIGN_KEY* zu Dingens
+    - **eindeutige** Themen
+        - *Primary KEY* ggf. mit *UNIQUE* Eigenschaft
 
 ---
 

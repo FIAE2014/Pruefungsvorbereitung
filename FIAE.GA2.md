@@ -1,18 +1,62 @@
 # FIAE Kompendium Cheat-Sheet zur Prüfung
 
 Inhalte werden anhand alter Prüfungen erstellt!
+## Else
+### [EPK](https://de.wikipedia.org/wiki/Ereignisgesteuerte_Prozesskette)
+![epk](https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Beispiel_ereignisorientierte_Prozesskette_%28EPK%29.png/170px-Beispiel_ereignisorientierte_Prozesskette_%28EPK%29.png)
+
+Funktion -> Zustand
+Auftrag annehmen -> Auftrag angenommen
+
+Verknüpfungen:
+ - AND -> Spitzenklammer nach oben like ^ sieht fast aus wie ein "A"
+ - OR -> V 
+ - XOR -> XOR
+
+Akteure -> Blase mit senkrechte Linie an der link Seite
 
 ## Software
-
+### Imperative Programmierung
+Programmiersprachen die wirklich etwas tun like C#, C++ etc
+### Deklarative Programmierung
+"Programmiersprachen" die wirklich etwas aussagen like YAML, XAML, Markdown ;)
+Beschreibung eines Problems im Vordergrund
+### 3GL/4GL
+4GL : Python, Ruby, PHP
+3GL : C , Fortran
+### Kyroptograhie
+#### [symmetrisches](https://de.wikipedia.org/wiki/Symmetrisches_Kryptosystem)
+![sy](https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Orange_blue_symmetric_cryptography_de.svg/300px-Orange_blue_symmetric_cryptography_de.svg.png)
+ - Ein Schlüssel für beide Parteien
+ - Beispiel -> AES oder Blowfish
+#### [asymmetrisches](https://de.wikipedia.org/wiki/Asymmetrisches_Kryptosystem)
+![asy](https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Orange_blue_public_private_keygeneration_de.svg/170px-Orange_blue_public_private_keygeneration_de.svg.png)
+ - Empfänger und Absender haben unterschiedliche Schlüssel (Privat/Public Key)
+ - sicherer als systemmtrische Kyptograhie
+ - Bekannteste Anwendungsbeispiel (RSA)
 ### Linux / Unix
 [vs](http://servermaniac.de/23924-unix-oder-linux-der-unterschied/)
 - Unix ist nur der Betriebssystemkern
 - Linux ein Bündle aus Kern und anderer Betriebsystemsoftware (Derviate wie Ubuntu)
 
-### RIA - Rich Internet Application
-Erweiterte Funktionen im Web (z.B. Drag and Drop). Bereitgestellt durch Framework.
+### [RIA](https://de.wikipedia.org/wiki/Rich_Internet_Application) - Rich Internet Application
+Erweiterte Funktionen im Web (z.B. Drag and Drop). Bereitgestellt durch Framework. Applikation kommuniziert mit Server.
 
-Definition: Internet und erweiterte Funktionalität
+Definition: „Reichhaltigkeit der Bedienoberfläche“ sowie „Verbindung mit dem Internet“
+
+Barrierefreiheit
+ - Inhalt ist durch Screenreader lesbar
+ - Bilder müssen alternativ text haben
+ - Tab Steuerbar
+Suchmaschinenoptimierung
+ - Bots lesen gezielt definierte Inhalt aus (meta tags etc)
+
+Pluginbasierend:
+ - Silverlight von Microsoft
+HTMLbasierend:
+ - Google Webtoolkit
+ - Diverse JS Frameworks
+
 
 ### [Multitasking](https://de.wikipedia.org/wiki/Multitasking)
  - Ausführung mehrere Aufgaben paralell
@@ -28,6 +72,19 @@ Verarbeitungseigenschaften
  - Durability -> Daten bleiben Dauerhaft in Datenbank
 
 ## Hardware
+### [Strukturierte Verkabelung](https://de.wikipedia.org/wiki/Strukturierte_Verkabelung)
+![skv](https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Strukturierte_Verkabelung.svg/200px-Strukturierte_Verkabelung.svg.png)
+1. Primär -> Gebäudeverkabelung -> Lichtwelleleiter (2000m)
+2. Sekundär -> vertikale Etagenverteilung -> LWL(2000m) oder Twistedpair(100m)
+3. Tertiär -> horizontale Etagenverkabelung -> Twistedpair(100m)
+
+### Lichtwelle
+ - Unempfintlich gegen EM Störungen
+ - Höher Datenrate
+ - Längere Übertragungsweg möglich
+ - ! Höhere Anschaffungskosten
+ - ! Schwerer zu verlegen da nicht knickbar
+
 ### [Von-Neumann-Architektur](https://de.wikipedia.org/wiki/Von-Neumann-Architektur)
 Referenzmodell für Computer, wonach ein gemeinsamer Speicher sowohl Computerprogrammbefehle als auch Daten hält
  - Komponenten
@@ -48,10 +105,10 @@ Schützt vor:
  - Überspannung
  - Frequenzänderungen
  - Oberschwingungen
-
--VFD (Voltage and Frequency Dependent bzw. Offline UPS/USV)
--VI (Voltage Independent bzw. Netzinteraktive UPS/USV)
--VFI (Voltage and Frequency Independent bzw. Online UPS/USV)
+Arten: 
+ - VFD (Voltage and Frequency Dependent bzw. Offline UPS/USV)
+ - VI (Voltage Independent bzw. Netzinteraktive UPS/USV)
+ - VFI (Voltage and Frequency Independent bzw. Online UPS/USV)
 
 ### Speicher
 
@@ -168,7 +225,34 @@ Bei IPsec müssen alle Endpunkte vorkonfiguriert sein, da sonst keine Vertrauens
  - SAD (security association database) -> Stateful, begrenzte Gültigkeit,symmetrischer Verschlüsselung
  + PSK-Authentisierung (Pre Shared Keying):Teilnehmermenge an das IPsec-VPN
  + Zertifikatsbasierte Authentisierung:Endpunkt seine CAs (Vertrauensstellen) kennt und alle Zertifikate
-
+#### [NNTP](https://de.wikipedia.org/wiki/Network_News_Transfer_Protocol) Network News Transfer Protocol
+Übertragungsprotokoll in Newsgruppen wie Usenet
+ nntp://<host>:<port>/<newsgroup-name>/<article-number>
+<table border="0" cellspacing="3" class="float-right">
+<caption>NNTP im <a href="/wiki/Internetprotokollfamilie#TCP.2FIP-Referenzmodell" title="Internetprotokollfamilie">TCP/IP‑Protokollstapel</a>:</caption>
+<tbody><tr>
+<td align="center" bgcolor="#FFCC99"><b>Anwendung</b></td>
+<td colspan="5" align="center" bgcolor="#9999FF"><b>NNTP</b></td>
+</tr>
+<tr>
+<td bgcolor="#FFEEBB" align="center"><i>Transport</i></td>
+<td colspan="5" align="center" bgcolor="#EEEEFF"><a href="/wiki/Transmission_Control_Protocol" title="Transmission Control Protocol">TCP</a></td>
+</tr>
+<tr>
+<td align="center" bgcolor="#FFEEBB"><i>Internet</i></td>
+<td colspan="5" align="center" bgcolor="#EEEEFF"><a href="/wiki/Internet_Protocol" title="Internet Protocol">IP</a> (<a href="/wiki/IPv4" title="IPv4">IPv4</a>, <a href="/wiki/IPv6" title="IPv6">IPv6</a>)</td>
+</tr>
+<tr>
+<td rowspan="2" align="center" bgcolor="#FFEEBB"><i>Netzzugang</i></td>
+<td rowspan="2" align="center" bgcolor="#EEEEEE"><a href="/wiki/Ethernet" title="Ethernet">Ethernet</a></td>
+<td rowspan="2" align="center" bgcolor="#EEEEEE"><a href="/wiki/Token_Bus" title="Token Bus">Token<br>
+Bus</a></td>
+<td rowspan="2" align="center" bgcolor="#EEEEEE"><a href="/wiki/Token_Ring" title="Token Ring">Token<br>
+Ring</a></td>
+<td rowspan="2" align="center" bgcolor="#EEEEEE"><a href="/wiki/Fiber_Distributed_Data_Interface" title="Fiber Distributed Data Interface">FDDI</a></td>
+<td rowspan="2" align="center" bgcolor="#EEEEEE">…</td>
+</tr>
+</tbody></table>
 #### [OSI](https://de.wikipedia.org/wiki/OSI-Modell)
 
 <table class="wikitable">
@@ -260,6 +344,10 @@ Punkt</a></td>
 <td align="center" bgcolor="#FFCC99"><a href="/wiki/Netzwerkkabel" title="Netzwerkkabel" class="mw-redirect">Netzwerkkabel</a>, <a href="/wiki/Repeater" title="Repeater">Repeater</a>, <a href="/wiki/Hub_(Netzwerk)" title="Hub (Netzwerk)" class="mw-redirect">Hub</a></td>
 </tr>
 </tbody></table>
+### RDP - Remote Desktop Protokol
+Übertragungsprotokoll von Bildschirmfreigaben
+### ICA
+Vorgänger von RDP (wurde nicht von Ms ausgekauft)
 
 ### Glossar
 
